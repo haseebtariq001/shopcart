@@ -49,7 +49,7 @@ function Cart() {
                 srcSet={`${item.image} 300w, ${item.image} 768w, ${item.image} 1280w`}
                 sizes="(max-width: 768px) 20vw, (max-width: 1280px) 15vw, 300px"
               />
-              <span className="text-lg font-medium">{item.title} - ${item.price} (x{item.quantity})</span>
+              <span className="text-lg font-medium">{item.title} : ${item.price} (x{item.quantity})</span>
             </div>
             <button onClick={() => removeFromCart(item.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">
               Remove
