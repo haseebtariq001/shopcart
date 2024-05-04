@@ -43,11 +43,11 @@ function Cart() {
             <div className="flex items-center">
               {/* Image made responsive with dynamic sizes and srcSet */}
               <img 
-                src={item.imageSmall} // Ensure you use the smallest by default for better loading times
+                src={item.image} 
                 alt={item.title} 
-                className="w-16 h-16 object-cover mr-4 rounded shadow-lg hover:shadow-xl transition-shadow duration-300" // Smaller default size
-                srcSet={`${item.imageSmall} 300w, ${item.imageMedium} 500w, ${item.imageLarge} 800w`}
-                sizes="(max-width: 768px) 15vw, (max-width: 1024px) 12vw, 150px"
+                className="w-20 h-20 object-cover mr-4 rounded shadow-lg hover:shadow-xl transition-shadow duration-300" 
+                srcSet={`${item.image} 300w, ${item.image} 768w, ${item.image} 1280w`}
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 20vw, 150px"
               />
               <span className="text-lg font-medium">{item.title} : ${item.price} (x{item.quantity})</span>
             </div>
