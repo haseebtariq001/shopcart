@@ -23,7 +23,7 @@ function Product({ product }) {
   };
 
   return (
-    <div className="border p-4 flex flex-col items-center justify-between transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 rounded-lg bg-white shadow-lg hover:shadow-xl">
+    <div id="products" className="border p-4 flex flex-col items-center justify-between transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 rounded-lg bg-white shadow-lg hover:shadow-xl">
       {/* Responsive image container with aspect ratio maintained */}
       <div className="w-full mb-3 overflow-hidden rounded">
         <img src={product.image} alt={product.title} className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" style={{ aspectRatio: '16/9' }} />
