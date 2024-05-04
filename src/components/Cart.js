@@ -41,11 +41,12 @@ function Cart() {
         {cartItems.map((item) => (
           <li key={item.id} className="flex justify-between items-center p-4 border-b border-gray-200 transform hover:scale-105 transition duration-300 ease-in-out">
             <div className="flex items-center">
+              {/* Image made responsive with dynamic sizes and srcSet */}
               <img 
                 src={item.image} 
                 alt={item.title} 
-                className="w-20 h-20 md:w-32 md:h-32 lg:w-48 lg:h-48 object-cover mr-4 rounded shadow-lg hover:shadow-xl transition-shadow duration-300" 
-                srcSet={`${item.image} 300w, ${item.image} 768w, ${item.image} 1280w`}
+                className="w-20 h-20 object-cover mr-4 rounded shadow-lg hover:shadow-xl transition-shadow duration-300" 
+                srcSet={`${item.imageSmall} 300w, ${item.imageMedium} 768w, ${item.imageLarge} 1280w`}
                 sizes="(max-width: 768px) 20vw, (max-width: 1280px) 15vw, 300px"
               />
               <span className="text-lg font-medium">{item.title} : ${item.price} (x{item.quantity})</span>
