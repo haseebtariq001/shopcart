@@ -47,7 +47,7 @@ function Cart() {
                 alt={item.title} 
                 className="w-20 h-20 object-cover mr-4 rounded shadow-lg hover:shadow-xl transition-shadow duration-300" 
                 srcSet={`${item.image} 300w, ${item.image} 768w, ${item.image} 1280w`}
-                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 20vw, 150px"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 300px"
               />
               <span className="text-lg font-medium">{item.title} : ${item.price} (x{item.quantity})</span>
             </div>
