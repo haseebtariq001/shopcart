@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
-/**
- * Footer component for the website.
- * Includes social media links, a newsletter subscription form, and copyright information.
- */
 function Footer() {
-  // State for managing the input email and any validation errors
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
 
-  /**
-   * Validates the given email using a regular expression to ensure it follows
-   * a standard email format.
-   * @param {string} email - Email to validate
-   * @returns {boolean} - True if the email is valid, otherwise false
-   */
   const validateEmail = (email) => {
     return String(email)
       .toLowerCase()
@@ -23,17 +14,11 @@ function Footer() {
       );
   };
 
-  /**
-   * Handles the click event on the Subscribe button.
-   * Validates the email and either shows an error or clears the form
-   * and shows a success message.
-   */
   const handleSubscribe = () => {
     if (validateEmail(email)) {
-      setError(''); // Clear any previous error
-      // Simulate a subscription action, normally here you would make an API call
+      setError('');
       alert('Thank you for subscribing!');
-      setEmail(''); // Reset the email input after successful subscription
+      setEmail('');
     } else {
       setError('Please enter a valid email address.');
     }
@@ -42,10 +27,16 @@ function Footer() {
   return (
     <footer id="footer" className="bg-gray-800 text-white text-center p-5 w-full">
       <div className="mb-2">
-        {/* Social media links */}
-        <a href="https://www.instagram.com" className="mx-2 hover:text-blue-400">Instagram</a>|
-        <a href="https://www.facebook.com" className="mx-2 hover:text-blue-400">Facebook</a>|
-        <a href="https://www.twitter.com" className="mx-2 hover:text-blue-400">Twitter</a>
+        {/* Social media icons */}
+        <a href="https://www.instagram.com" className="mx-2 hover:text-blue-400">
+          <FontAwesomeIcon icon={faInstagram} size="lg" />
+        </a>|
+        <a href="https://www.facebook.com" className="mx-2 hover:text-blue-400">
+          <FontAwesomeIcon icon={faFacebook} size="lg" />
+        </a>|
+        <a href="https://www.twitter.com" className="mx-2 hover:text-blue-400">
+          <FontAwesomeIcon icon={faTwitter} size="lg" />
+        </a>
       </div>
       <div className="mt-2">
         {/* Subscription form */}
@@ -64,7 +55,6 @@ function Footer() {
         </button>
         {error && <p className="text-red-400 text-xs mt-2">{error}</p>}
       </div>
-      {/* Copyright information */}
       <p className="mt-5 text-gray-400">
         © 2024 My Website. All rights reserved.
       </p>
