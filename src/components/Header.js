@@ -1,13 +1,9 @@
 // src/components/Header.js
 import React, { useState, useContext } from 'react';
-import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { Link } from 'react-router-dom';
+import { MenuIcon, XIcon, ShoppingCartIcon } from '@heroicons/react/outline';
 import { CartContext } from '../context/CartContext';
 
-/**
- * Header component providing navigation across the site.
- * Utilizes CartContext to display the total number of items in the cart.
- */
 function Header() {
   const [isOpen, setIsOpen] = useState(false); // State to manage mobile menu toggle
   const { cartItems } = useContext(CartContext); // Access cart context for cart item data
@@ -31,8 +27,9 @@ function Header() {
             <Link to="/" className="py-5 px-3 text-gray-700 hover:text-gray-900">Home</Link>
             <a href="#products" className="py-5 px-3 text-gray-700 hover:text-gray-900">Products</a>
             <a href="#footer" className="py-5 px-3 text-gray-700 hover:text-gray-900">Contact</a>
-            <Link to="/cart" className="py-5 px-3 text-gray-700 hover:text-gray-900">
-              Cart ({cartItemCount}) {/* Display dynamically updated cart item count */}
+            <Link to="/cart" className="py-5 px-3 text-gray-700 hover:text-gray-900 flex items-center">
+              <ShoppingCartIcon className="h-6 w-6 mr-1" />
+              ({cartItemCount})
             </Link>
           </div>
           {/* Mobile menu toggle button */}
@@ -48,8 +45,9 @@ function Header() {
             <Link to="/" className="block py-2 px-4 text-sm hover:bg-gray-200">Home</Link>
             <a href="#products" className="block py-2 px-4 text-sm hover:bg-gray-200">Products</a>
             <a href="#footer" className="block py-2 px-4 text-sm hover:bg-gray-200">Contact</a>
-            <Link to="/cart" className="block py-2 px-4 text-sm hover:bg-gray-200">
-              Cart ({cartItemCount}) {/* Include cart item count in mobile menu */}
+            <Link to="/cart" className="block py-2 px-4 text-sm hover:bg-gray-200 flex items-center">
+              <ShoppingCartIcon className="h-6 w-6 mr-1" />
+              ({cartItemCount})
             </Link>
           </div>
         )}
