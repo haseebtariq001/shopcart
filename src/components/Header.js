@@ -20,7 +20,7 @@ function Header() {
           <div className="flex space-x-4">
             {/* Website logo and title */}
             <div>
-              <Link to="/" className="flex items-center py-5 px-2 text-gray-700">
+              <Link to="/" className="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900">
                 <img src="logo.png" alt="Logo" className="h-8 w-8 mr-2" />
                 <span className="font-bold">My Website</span>
               </Link>
@@ -44,12 +44,12 @@ function Header() {
         </div>
         {/* Mobile menu content */}
         {isOpen && (
-          <div className="block" onClick={() => setIsOpen(false)}>
+          <div className="md:hidden block" onClick={() => setIsOpen(false)}>
             <Link to="/" className="block py-2 px-4 text-sm hover:bg-gray-200">Home</Link>
             <a href="#products" className="block py-2 px-4 text-sm hover:bg-gray-200">Products</a>
             <a href="#footer" className="block py-2 px-4 text-sm hover:bg-gray-200">Contact</a>
-            <Link to="/cart" className="py-5 px-3 text-gray-700 hover:text-gray-900">
-              Cart ({cartItemCount}) {/* Display dynamically updated cart item count */}
+            <Link to="/cart" className="block py-2 px-4 text-sm hover:bg-gray-200">
+              Cart ({cartItemCount}) {/* Include cart item count in mobile menu */}
             </Link>
           </div>
         )}
