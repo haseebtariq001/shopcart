@@ -1,26 +1,19 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
+import { ToasterContext } from './Toaster';  // Make sure the path is correct
 
-/**
- * Product component displays individual product details and handles cart operations.
- * @param {object} product - Product data.
- */
 function Product({ product }) {
-  // Access addToCart function from the shared CartContext
-  const { addToCart } = useContext(CartContext);
-  // Local state to manage visibility of the add-to-cart notification
-  const [showNotification, setShowNotification] = useState(false);
+    const { addToCart } = useContext(CartContext);
+    const { addToast } = useContext(ToasterContext);  // Use addToast from ToasterContext
 
-  /**
-   * Handles adding the product to the cart and showing a notification.
-   * @param {object} product - Product to be added to the cart.
-   */
-  const handleAddToCart = product => {
-    addToCart(product);
-    setShowNotification(true);
-    // Set a timer to hide the notification after 2 seconds
-    setTimeout(() => setShowNotification(false), 2000);
-  };
+    /**
+     * Handles adding the product to the cart and showing a toast notification.
+     * @param {object} product - Product to be added to the cart.
+     */
+    const handleAddToCart = product => {
+        addToCart(product);
+        addToast("Product has been Added to cart");  // Trigger a toast message
+    };
 
   return (
     <div id="products" className="border p-4 flex flex-col items-center justify-between transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 rounded-lg bg-white shadow-lg hover:shadow-xl">
@@ -37,8 +30,7 @@ function Product({ product }) {
             Add to Cart
           </button>
         </div>
-        {/* Notification shown when a product is added to the cart */}
-        {showNotification && <p className="text-green-500 mt-2">Added to cart!</p>}
+      
       </div>
     </div>
   );
