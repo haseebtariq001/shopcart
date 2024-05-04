@@ -2,29 +2,16 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 
-/**
- * Cart component displays the cart items and provides options to remove items and checkout.
- * Uses the CartContext for managing cart state and actions.
- */
 function Cart() {
-  const { cartItems, removeFromCart, clearCart } = useContext(CartContext); // Access cart context
-  const navigate = useNavigate(); // Hook for programmatically navigating
-
-  /**
-   * Calculate the total cost of the items in the cart.
-   * @returns {number} The total price of all items in the cart.
-   */
+  const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
+  const navigate = useNavigate();
   const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
-  /**
-   * handleCheckout handles the checkout process by clearing the cart and redirecting to the checkout page.
-   */
   const handleCheckout = () => {
-    clearCart(); // Clears all items from the cart
-    navigate('/checkout'); // Navigates to the checkout confirmation page
+    clearCart();
+    navigate('/checkout');
   };
 
-  // Display message if cart is empty
   if (cartItems.length === 0) {
     return (
       <div className="container mx-auto px-4 py-6">
@@ -33,7 +20,6 @@ function Cart() {
     );
   }
 
-  // Render cart items if not empty
   return (
     <div className="container mx-auto px-4 py-6">
       <h2 className="text-2xl font-bold text-center mb-6 animate-pulse">Your Cart</h2>
@@ -41,13 +27,12 @@ function Cart() {
         {cartItems.map((item) => (
           <li key={item.id} className="flex justify-between items-center p-4 border-b border-gray-200 transform hover:scale-105 transition duration-300 ease-in-out">
             <div className="flex items-center">
-              {/* Image made responsive with dynamic sizes and srcSet */}
               <img 
                 src={item.image} 
                 alt={item.title} 
-                className="w-20 h-20 object-cover mr-4 rounded shadow-lg hover:shadow-xl transition-shadow duration-300" 
+                className="w-20 h-20 object-cover mr-4 rounded shadow-lg hover:shadow-xl transition-shadow duration-300"
                 srcSet={`${item.image} 300w, ${item.image} 768w, ${item.image} 1280w`}
-                sizes="(max-width: 768px) 20vw, (max-width: 1280px) 15vw, 300px"
+                sizes="(max-width: 768px) 50vw, (max-width: 1280px) 20vw, 300px"
               />
               <span className="text-lg font-medium">{item.title} : ${item.price} (x{item.quantity})</span>
             </div>
